@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <item android:title="Matches">
+        <menu>
+            <item
+                android:id="@+id/ajoutmatch"
+                android:title="Ajouter un matche"
+                android:icon="@drawable/ic_action_name2"
+             />
+
+            <item
+                android:id="@+id/nav_manage"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Editer un matche" />
+        </menu>
+    </item>
+
+    <item android:title="Photos">
+        <menu>
+            <item
+                android:id="@+id/nav_camera"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="Prendre une photo" />
+            <item
+                android:id="@+id/nav_gallery"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Gallerie photos" />
+        </menu>
+    </item>
+
+    <item android:title="Statistiques">
+        <menu>
+            <item
+                android:id="@+id/nav_stat"
+                android:icon="@drawable/ic_action_name"
+                android:title="Statistique des matches" />
+
+
+
+        </menu>
+    </item>
+
+</menu>
