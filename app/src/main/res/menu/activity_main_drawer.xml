@@ -38,9 +38,6 @@
                 android:id="@+id/nav_stat"
                 android:icon="@drawable/ic_action_name"
                 android:title="Statistique des matchs" />
-<<<<<<< HEAD
-
-
 
         </menu>
     </item>
@@ -51,8 +48,6 @@
                 android:id="@+id/nav_infos"
                 android:icon="@drawable/ic_action_name"
                 android:title="Qu'est-ce que la Cesta Punta ?" />
-=======
->>>>>>> 616e08329a015316e51bc7c8f9a6bce2c81afad6
 
 
 
