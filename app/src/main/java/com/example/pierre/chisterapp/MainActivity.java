@@ -80,6 +80,12 @@ public class MainActivity extends AppCompatActivity
 
             startActivity(intent);
             return true;
+        }
+        if (id == R.id.ajoutmatch) {
+
+            Intent intent = new Intent( this, AjouterMatch.class);
+
+            startActivity(intent);
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
             Intent intent = new Intent(this, GalleryActivity.class);
