@@ -14,8 +14,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="204dp"
-        android:layout_height="80dp"
+        android:layout_width="352dp"
+        android:layout_height="103dp"
         android:background="@color/colorPrimaryWhite"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:src="@mipmap/ic_launcher_foreground" />

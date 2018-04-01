@@ -83,19 +83,28 @@ public class MainActivity extends AppCompatActivity
         }
         if (id == R.id.ajoutmatch) {
 
-            Intent intent = new Intent( this, AjouterMatch.class);
+            Intent intent = new Intent(this, AjouterMatch.class);
 
             startActivity(intent);
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        }
+        if (id == R.id.nav_gallery) {
             Intent intent = new Intent(this, GalleryActivity.class);
 
             startActivity(intent);
             return true;
 
-        } else if (id == R.id.nav_manage) {}
+        }
+        if (id == R.id.nav_infos) {
+
+            Intent intent = new Intent(this, Infos.class);
+
+            startActivity(intent);
+            return true;
 
 
+        } else if (id == R.id.nav_manage) {
+        }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
