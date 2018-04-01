@@ -81,13 +81,15 @@
 
     </LinearLayout>
 
+
     <Button
         android:id="@+id/ajoutmatch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20px"
-        android:text="Ajouter le match" />
+        android:text="Ajouter le match"
+        android:onClick="myClickHandler"/>
 
 
 

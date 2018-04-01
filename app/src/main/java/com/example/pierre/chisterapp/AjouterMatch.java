@@ -13,7 +13,11 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -25,6 +29,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
 public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
 
 
@@ -34,20 +41,16 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
     private TextView Longmatch;
     EditText Equip1;
     EditText Equip2;
+    ListView mListView;
 
     double lat;
     double lng;
 
+
+
     private Marker clickedMarker;
-    private Marker currentMarker;
-    private LocationManager locationManager;
+    private MatchsDataSource datasource;
 
-    private String provider;
-
-
-
-    String[] permissions = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
-    private int USER_LOCATION_REQUESTCODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,8 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
+        mapFragment.getMapAsync(this);
+
 
 
 
@@ -64,6 +69,12 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         Longmatch = (TextView) findViewById(R.id.longi);
         Equip1 = findViewById(R.id.equip1);
         Equip2 = findViewById(R.id.equip2);
+
+
+
+        datasource = new MatchsDataSource(this);
+
+        datasource.open();
 
 
 
@@ -89,30 +100,57 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
 
             clickedMarker = mMap.addMarker(new MarkerOptions().position(latLng).title("Marqueur cliqué").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
 
-             lat = (double) (latLng.latitude);
-             lng = (double) (latLng.longitude);
+            lat = (double) (latLng.latitude);
+            lng = (double) (latLng.longitude);
 
-            Latmatch.setText("Latitude du match "+ String.valueOf(lat));
-            Longmatch.setText("Longitude du match "+ String.valueOf(lng));
+            Latmatch.setText("Latitude du match : "+ String.valueOf(lat));
+            Longmatch.setText("Longitude du match : "+ String.valueOf(lng));
 
 
         }
     }
 
+    public void ajoutMatch(View view) {
+        //@SuppressWarnings("unchecked")
+        //ArrayAdapter<Match> adapter = (ArrayAdapter<Match>) mListView.getAdapter();
+        Match match = null;
+
+
+                match = datasource.createMatch(Equip1.getText().toString(),Equip2.getText().toString(), Longmatch.getText().toString(), Latmatch.getText().toString());
+               // adapter.add(match);
+
+
+       // adapter.notifyDataSetChanged();
+        finish();
+    }
+
+    public void myClickHandler(View view) throws ExecutionException, InterruptedException {
+
+        if (view.getId()==R.id.ajoutmatch) {
+
+            ajoutMatch(view);
+
+
+        }
+
+    }
+
+
     @Override
     protected void onPause() {
+
+        datasource.close();
         super.onPause();
 
 
 
     }
 
-
-
-
-
-
-
+    @Override
+    protected void onResume() {
+        datasource.open();
+        super.onResume();
+    }
 
 
 

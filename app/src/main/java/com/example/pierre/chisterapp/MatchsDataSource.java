@@ -19,7 +19,7 @@ public class MatchsDataSource {
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
     private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-            MySQLiteHelper.COLUMN_TEAM1,   MySQLiteHelper.COLUMN_TEAM2,   MySQLiteHelper.COLUMN_LONG,   MySQLiteHelper.COLUMN_LAT };
+            MySQLiteHelper.COLUMN_TEAM1, MySQLiteHelper.COLUMN_TEAM2, MySQLiteHelper.COLUMN_LONG, MySQLiteHelper.COLUMN_LAT };
 
     public MatchsDataSource(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -57,7 +57,7 @@ public class MatchsDataSource {
                 + " = " + id, null);
     }
 
-    public List<Match> getAllComments() {
+    public List<Match> getAllMatchs() {
         List<Match> comments = new ArrayList<Match>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_MATCHS,

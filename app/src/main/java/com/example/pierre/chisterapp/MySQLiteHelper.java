@@ -24,10 +24,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     // Commande sql pour la création de la base de données
     private static final String DATABASE_CREATE = "create table "
             + TABLE_MATCHS + "(" + COLUMN_ID
-            + " integer primary key autoincrement, " + COLUMN_TEAM1 + COLUMN_TEAM1
-            + " text not null " + COLUMN_TEAM2
-            + " text not null " + COLUMN_LONG
-            + " text not null " + COLUMN_LAT
+            + " integer primary key autoincrement, " + COLUMN_TEAM1
+            + " text not null, " + COLUMN_TEAM2
+            + " text not null, " + COLUMN_LONG
+            + " text not null, " + COLUMN_LAT
             + " text not null);";
 
     public MySQLiteHelper(Context context) {
