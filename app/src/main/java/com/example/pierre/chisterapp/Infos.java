@@ -2,9 +2,6 @@ package com.example.pierre.chisterapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.GridView;
-
-import java.io.File;
 
 /**
  * Created by Adri on 01/04/2018.

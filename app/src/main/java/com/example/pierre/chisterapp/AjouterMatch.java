@@ -1,8 +1,6 @@
 package com.example.pierre.chisterapp;
 
-import android.Manifest;
 import android.app.ProgressDialog;
-import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -10,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -27,6 +26,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
 
@@ -37,15 +37,11 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
     private TextView Longmatch;
     EditText Equip1;
     EditText Equip2;
+    ListView mListView;
 
     double lat;
     double lng;
 
-    private Marker clickedMarker;
-    private Marker currentMarker;
-    private LocationManager locationManager;
-
-    private String provider;
 
     // Progress Dialog
     private ProgressDialog pDialog;
@@ -54,9 +50,9 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
 
     Button btnNewMatch;
 
+    private Marker clickedMarker;
+    private MatchsDataSource datasource;
 
-    String[] permissions = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
-    private int USER_LOCATION_REQUESTCODE = 1;
 
     // url to create new product
     private static String url_create_match = "localhost/android_connect/create_match.php";
@@ -72,7 +68,10 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+
         btnNewMatch = (Button) findViewById(R.id.ajoutmatch);
+
+        mapFragment.getMapAsync(this);
 
 
         Latmatch = (TextView) findViewById(R.id.lat);
@@ -89,6 +88,12 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
                 new CreateNewMatch().execute();
             }
         });
+
+        datasource = new MatchsDataSource(this);
+
+        datasource.open();
+
+
 
 
     }
@@ -117,16 +122,21 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
 
             Latmatch.setText("Latitude du match " + String.valueOf(lat));
             Longmatch.setText("Longitude du match " + String.valueOf(lng));
+            Latmatch.setText("Latitude du match : "+ String.valueOf(lat));
+            Longmatch.setText("Longitude du match : "+ String.valueOf(lng));
 
 
         }
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
+    public void ajoutMatch(View view) {
+        //@SuppressWarnings("unchecked")
+        //ArrayAdapter<Match> adapter = (ArrayAdapter<Match>) mListView.getAdapter();
+        Match match = null;
 
 
+                match = datasource.createMatch(Equip1.getText().toString(),Equip2.getText().toString(), Longmatch.getText().toString(), Latmatch.getText().toString());
+               // adapter.add(match);
     }
 
     /**
@@ -193,15 +203,44 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
             return null;
         }
 
+       // adapter.notifyDataSetChanged();
+        //finish();
+    }
+
+    public void myClickHandler(View view) throws ExecutionException, InterruptedException {
+
+        if (view.getId() == R.id.ajoutmatch) {
+
+            ajoutMatch(view);
+        }
+    }
+
         /**
          * After completing background task Dismiss the progress dialog
          * **/
-        protected void onPostExecute(String file_url) {
+        protected void onPostExecute(String url_create_match)
+        {
             System.out.println("3");
             // dismiss the dialog once done
             pDialog.dismiss();
         }
 
+
+
+    @Override
+    protected void onPause() {
+
+        datasource.close();
+        super.onPause();
+
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        datasource.open();
+        super.onResume();
     }
 
 

@@ -51,9 +51,11 @@ public class Match {
     }
 
 
-    /*// Sera utilisée par ArrayAdapter dans la ListView
+    // Sera utilisée par ArrayAdapter dans la ListView
     @Override
     public String toString() {
-        return comment;
-    }*/
+
+     String s = "Match opposant " + team1 +  " à " + team2 +"\n" + longitude + "\n" + latitude;
+        return s;
+    }
 }
