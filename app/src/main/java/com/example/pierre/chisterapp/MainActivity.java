@@ -1,13 +1,7 @@
 package com.example.pierre.chisterapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.SurfaceHolder;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,11 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -50,7 +44,6 @@ public class MainActivity extends AppCompatActivity
         mListView = (ListView) findViewById(R.id.listView);
 
         datasource = new MatchsDataSource(this);
-
 
 
     }
@@ -101,7 +94,7 @@ public class MainActivity extends AppCompatActivity
         }
         if (id == R.id.ajoutmatch) {
 
-            Intent intent = new Intent( this, AjouterMatch.class);
+            Intent intent = new Intent(this, AjouterMatch.class);
 
             startActivity(intent);
             // Handle the camera action
@@ -111,9 +104,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             return true;
 
-        } else if (id == R.id.nav_manage) {}
-
-
+        } else if (id == R.id.nav_manage) {
+        }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -122,36 +114,29 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     public void supprimermatch() {
 
         ArrayAdapter<Match> adapter = (ArrayAdapter<Match>) mListView.getAdapter();
         Match match = null;
 
         if (mListView.getAdapter().getCount() > 0) {
-            match = (Match) mListView.getAdapter().getItem(mListView.getAdapter().getCount()-1);
+            match = (Match) mListView.getAdapter().getItem(mListView.getAdapter().getCount() - 1);
             datasource.deleteMatch(match);
             adapter.remove(match);
-        }
-
-        else
-        {
-            Toast toast = Toast.makeText(this, "Aucun match à supprimer",  Toast.LENGTH_LONG);
+        } else {
+            Toast toast = Toast.makeText(this, "Aucun match à supprimer", Toast.LENGTH_LONG);
             toast.show();
 
         }
-
 
 
     }
 
     public void myClickHandler(View view) throws ExecutionException, InterruptedException {
 
-        if (view.getId()==R.id.delete) {
+        if (view.getId() == R.id.delete) {
 
             supprimermatch();
-
-
 
 
         }
@@ -174,7 +159,7 @@ public class MainActivity extends AppCompatActivity
 
         if (mListView.getAdapter().getCount() == 0) {
 
-            Toast toast = Toast.makeText(this, "Aucun match enregistré, aller dans 'Ajouter un match'pour enregistrer un match",  Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, "Aucun match enregistré, aller dans 'Ajouter un match'pour enregistrer un match", Toast.LENGTH_LONG);
             toast.show();
 
         }
@@ -191,10 +176,7 @@ public class MainActivity extends AppCompatActivity
         super.onPause();
 
 
-
     }
-
-
 
 
 }
