@@ -14,8 +14,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="92dp"
+        android:layout_width="204dp"
+        android:layout_height="80dp"
         android:background="@color/colorPrimaryWhite"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:src="@mipmap/ic_launcher_foreground" />
@@ -24,9 +24,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="L'appli du pays basque"
+        android:text="L'appli de la Cesta Punta !"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@color/colorPrimary" />
 
 
 

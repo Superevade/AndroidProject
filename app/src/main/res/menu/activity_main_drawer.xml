@@ -39,6 +39,16 @@
                 android:icon="@drawable/ic_action_name"
                 android:title="Statistique des matchs" />
 
+        </menu>
+    </item>
+
+    <item android:title="Informations">
+        <menu>
+            <item
+                android:id="@+id/nav_infos"
+                android:icon="@drawable/ic_action_name"
+                android:title="Qu'est-ce que la Cesta Punta ?" />
+
 
 
         </menu>
