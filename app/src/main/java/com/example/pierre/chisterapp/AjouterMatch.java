@@ -1,6 +1,8 @@
 package com.example.pierre.chisterapp;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -16,6 +18,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
@@ -88,7 +93,32 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
             lng = (double) (latLng.longitude);
 
             Latmatch.setText("Latitude du match : "+ String.valueOf(lat));
-            Longmatch.setText("Longitude du match : "+ String.valueOf(lng));
+
+
+            Geocoder geocoder;
+            List<Address> addresses;
+            geocoder = new Geocoder(this, Locale.getDefault());
+
+            try {
+                addresses = geocoder.getFromLocation(lat, lng, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+                String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+                String city = addresses.get(0).getLocality();
+                String state = addresses.get(0).getAdminArea();
+                String country = addresses.get(0).getCountryName();
+                String postalCode = addresses.get(0).getPostalCode();
+               
+
+                System.out.println(address);
+                System.out.println(city);
+                System.out.println(state);
+                System.out.println(country);
+                System.out.println(postalCode);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
 
 
         }
