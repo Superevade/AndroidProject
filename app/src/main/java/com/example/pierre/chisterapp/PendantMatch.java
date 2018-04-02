@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.RadioButton;
+import android.widget.ToggleButton;
 import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
@@ -26,7 +27,7 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
     Button bfaute1;
     Button bfaute2;
     Button bpause;
-    Button bservice;
+    ToggleButton bservice;
     Button bannulfaute;
     Button bfinmatch;
     RadioButton baff1;
@@ -130,6 +131,8 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
         service = true;
         baff1.setChecked(false);
         baff2.setChecked(true);
+        bservice.setChecked(false);
+        fauteservice=0;
     }
 
     public void setFaute2() {
@@ -139,6 +142,8 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
         service = false;
         baff1.setChecked(true);
         baff2.setChecked(false);
+        bservice.setChecked(false);
+        fauteservice=0;
     }
 
     public void setScore1() {
@@ -225,12 +230,10 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
                 {
                     setFaute1();
                     setScore2();
-                    fauteservice = 0;
                 }else if (baff2.isChecked() && service)
                 {
                     setFaute2();
                     setScore1();
-                    fauteservice = 0;
                 }
 
             }
