@@ -106,7 +106,7 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
                 String state = addresses.get(0).getAdminArea();
                 String country = addresses.get(0).getCountryName();
                 String postalCode = addresses.get(0).getPostalCode();
-               
+
 
                 System.out.println(address);
                 System.out.println(city);
