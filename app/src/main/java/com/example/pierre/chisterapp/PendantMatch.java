@@ -149,11 +149,13 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
     public void setScore1() {
         ajoutscore1 = ajoutscore1 + 1;
         score1.setText(String.valueOf(ajoutscore1));
+        checkScore();
     }
 
     public void setScore2() {
         ajoutscore2 = ajoutscore2 + 1;
         score2.setText(String.valueOf(ajoutscore2));
+        checkScore();
     }
 
     public void annulerfaute1() {
@@ -185,6 +187,12 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
         service = true;
     }
 
+    public void checkScore()
+    {
+        if(ajoutscore1 == 35 || ajoutscore2 == 35)
+            terminermatch();
+    }
+
     public void terminermatch() {
 
         datasource.update(idmatch, score1.getText().toString(), String.valueOf(faute1), score2.getText().toString(), String.valueOf(faute2));
@@ -193,7 +201,6 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
     }
 
     public void myClickHandler(View view) throws ExecutionException, InterruptedException {
-        System.out.println("listener");
 
         if (view.getId() == R.id.faute1) {
             System.out.println("faute1");

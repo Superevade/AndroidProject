@@ -63,8 +63,6 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         datasource.open();
 
 
-
-
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
