@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+        android:clipToPadding="false"
+        android:fillViewport="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/colorPrimaryOrange">>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="400dp"
+                android:layout_height="130dp"
+                android:layout_below="@+id/textView2"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginTop="13dp"
+                android:layout_weight="1"
+                android:text="La Cesta Punta – spécialité la plus spectaculaire de la pelote basque – exige des qualités d'endurance, de force, de vitesse et de « vista » (coup d'oeil).  Le jeu consiste à renvoyer sur le fronton la pelote servie par l'adversaire en la prenant soit à la volée, soit après un seul rebond au sol. La pelote atteint des vitesses de 200 à 300 km/h."
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="93dp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textView3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="110dp"
+                app:srcCompat="@drawable/rules"
+                tools:layout_editor_absoluteX="56dp"
+                tools:layout_editor_absoluteY="208dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
+                android:text="La spécialité la plus spectaculaire de pelote basque"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="54dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_alignParentTop="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="14dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-condensed"
+                android:text="LA CESTA PUNTA, C'EST QUOI ?"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="16dp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="404dp"
+                android:layout_height="250dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/imageView3"
+                android:layout_weight="1"
+                android:text="Le « but » (service) s'effectue à hauteur de la ligne n° 10 ;  La pelote, après avoir rebondi contre le frontis, doit retomber (à moins que l'adversaire ne l'intercepte) entre les lignes 4 et 7.  Si le n° 4 n'est pas dépassé, le point est acquis à l'adversaire. Si le n° 7 est dépassé, le joueur a droit à un deuxième et dernier engagement.  L'équipe qui a gagné le point engage le point suivant.  En cours de jeu, l'avant ou l'arrière peut indifféremment renvoyer la pelote en coup droit ou en revers, mais toujours dans le mouvement. Il y a faute lorsque le joueur n'attrape pas la pelote, quand cette dernière est gardée trop longtemps dans le chistera, rebondit dans celui-ci ou sort des limites jouables. Une partie se joue en 35 points. Chaque point compte 1 et s'additionne.  Trois juges officient aux lignes 4, 7 et 10. Le juge du 7 est le juge-arbitre. Ses décisions sont sans appel."
+                tools:layout_editor_absoluteX="3dp"
+                tools:layout_editor_absoluteY="202dp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

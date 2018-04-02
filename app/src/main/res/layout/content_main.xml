@@ -24,8 +24,10 @@
 
             android:text="Liste des matchs engistrés dans la bdd locale :"
             android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+           />
 
 
 
@@ -33,17 +35,12 @@
         android:id="@+id/listView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20px"/>
+        android:layout_margin="20px"
+        android:background="@color/colorPrimary"
 
-        <Button
-            android:id="@+id/delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="myClickHandler"
-            android:text="Supprimer le plus récent match"
-            android:layout_margin="20px"
-            android:layout_gravity="center_horizontal"
-            />
+        />
+
+
 
     </LinearLayout>
 

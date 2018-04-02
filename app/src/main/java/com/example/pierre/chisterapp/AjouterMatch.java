@@ -116,7 +116,7 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         Match match = null;
 
 
-                match = datasource.createMatch(Equip1.getText().toString(),Equip2.getText().toString(), Longmatch.getText().toString(), Latmatch.getText().toString());
+                match = datasource.createMatch(Equip1.getText().toString(),Equip2.getText().toString(), Longmatch.getText().toString(), Latmatch.getText().toString(),"0","0","0","0");
                // adapter.add(match);
 
 

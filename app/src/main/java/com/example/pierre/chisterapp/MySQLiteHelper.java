@@ -1,5 +1,6 @@
 package com.example.pierre.chisterapp;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -17,6 +18,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_TEAM2 = "team2";
     public static final String COLUMN_LONG = "long";
     public static final String COLUMN_LAT = "lat";
+    public static final String COLUMN_SCORE1 = "score1";
+    public static final String COLUMN_FAUTES1 = "faute1";
+    public static final String COLUMN_SCORE2 = "score2";
+    public static final String COLUMN_FAUTES2 = "faute2";
+
+
 
     private static final String DATABASE_NAME = "matchs.db";
     private static final int DATABASE_VERSION = 1;
@@ -28,6 +35,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + " text not null, " + COLUMN_TEAM2
             + " text not null, " + COLUMN_LONG
             + " text not null, " + COLUMN_LAT
+            + " text not null, " + COLUMN_SCORE1
+            + " text not null, " + COLUMN_FAUTES1
+            + " text not null, " + COLUMN_SCORE2
+            + " text not null, " + COLUMN_FAUTES2
             + " text not null);";
 
     public MySQLiteHelper(Context context) {
@@ -46,7 +57,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                         + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MATCHS);
         onCreate(db);
+
     }
+
+
 
 
 }

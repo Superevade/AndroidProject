@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    tools:showIn="navigation_view"
+
+    >
 
 
     <item android:title="Matchs">
+
+
+
         <menu>
             <item
+
                 android:id="@+id/ajoutmatch"
                 android:title="Ajouter un match"
                 android:icon="@drawable/ic_action_name2"
@@ -46,8 +52,8 @@
         <menu>
             <item
                 android:id="@+id/nav_infos"
-                android:icon="@drawable/ic_action_name"
-                android:title="Qu'est-ce que la Cesta Punta ?" />
+                android:icon="@drawable/ic_infos"
+                android:title="Les règles de la Cesta Punta" />
 
 
 

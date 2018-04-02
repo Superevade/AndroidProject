@@ -87,10 +87,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            Intent intent = new Intent(this, CameraActivity.class);
+            //Intent intent = new Intent(this, CameraActivity.class);
 
-            startActivity(intent);
-            return true;
+            //startActivity(intent);
+            // return true;
         }
         if (id == R.id.ajoutmatch) {
 
@@ -98,13 +98,29 @@ public class MainActivity extends AppCompatActivity
 
             startActivity(intent);
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-            Intent intent = new Intent(this, GalleryActivity.class);
+        }
+        if (id == R.id.nav_gallery) {
+            //Intent intent = new Intent(this, GalleryActivity.class);
+
+            // startActivity(intent);
+            //   return true;
+
+
+        }
+        if (id == R.id.nav_infos) {
+
+            Intent intent = new Intent(this, Infos.class);
 
             startActivity(intent);
             return true;
 
+
         } else if (id == R.id.nav_manage) {
+
+            Intent intent = new Intent(this, ModifierMatch.class);
+
+            startActivity(intent);
+            // Handle the camera action
         }
 
 
@@ -114,34 +130,7 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void supprimermatch() {
 
-        ArrayAdapter<Match> adapter = (ArrayAdapter<Match>) mListView.getAdapter();
-        Match match = null;
-
-        if (mListView.getAdapter().getCount() > 0) {
-            match = (Match) mListView.getAdapter().getItem(mListView.getAdapter().getCount() - 1);
-            datasource.deleteMatch(match);
-            adapter.remove(match);
-        } else {
-            Toast toast = Toast.makeText(this, "Aucun match à supprimer", Toast.LENGTH_LONG);
-            toast.show();
-
-        }
-
-
-    }
-
-    public void myClickHandler(View view) throws ExecutionException, InterruptedException {
-
-        if (view.getId() == R.id.delete) {
-
-            supprimermatch();
-
-
-        }
-
-    }
 
 
     @Override
