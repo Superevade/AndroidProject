@@ -10,13 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -87,10 +85,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            //Intent intent = new Intent(this, CameraActivity.class);
+            Intent intent = new Intent(this, CameraActivity.class);
 
-            //startActivity(intent);
-            // return true;
+            startActivity(intent);
+            return true;
         }
         if (id == R.id.ajoutmatch) {
 
@@ -100,10 +98,10 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
         }
         if (id == R.id.nav_gallery) {
-            //Intent intent = new Intent(this, GalleryActivity.class);
+            Intent intent = new Intent(this, GalleryActivity.class);
 
-            // startActivity(intent);
-            //   return true;
+             startActivity(intent);
+               return true;
 
 
         }

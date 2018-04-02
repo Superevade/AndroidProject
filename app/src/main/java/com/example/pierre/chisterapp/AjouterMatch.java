@@ -1,26 +1,13 @@
 package com.example.pierre.chisterapp;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.location.Criteria;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -29,7 +16,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
@@ -120,8 +106,14 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
                // adapter.add(match);
 
 
+
        // adapter.notifyDataSetChanged();
         finish();
+        Intent intent = new Intent(this, PendantMatch.class);
+        intent.putExtra("equipe1", match.getTeam1());
+        intent.putExtra("equipe2", match.getTeam2());
+        intent.putExtra("idmatch", match.getId());
+        startActivity(intent);
     }
 
     public void myClickHandler(View view) throws ExecutionException, InterruptedException {

@@ -62,7 +62,8 @@
         <activity
             android:name=".AjouterMatch"
             android:label="@string/title_activity_ajouter_match" />
-        <activity android:name=".ModifierMatch"></activity>
+        <activity android:name=".ModifierMatch" />
+        <activity android:name=".PendantMatch"></activity>
     </application>
 
 </manifest>

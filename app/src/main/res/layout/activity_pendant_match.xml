@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.pierre.chisterapp.PendantMatch">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/titre1"
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/affequipe1"
+            android:layout_alignLeft="@+id/affequipe1"
+            android:layout_alignStart="@+id/affequipe1"
+            android:text="Equipe 1"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/titre2"
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/affequipe2"
+            android:layout_alignLeft="@+id/affequipe2"
+            android:layout_alignStart="@+id/affequipe2"
+            android:text="Equipe 2"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/affequipe1"
+            android:layout_width="106dp"
+            android:layout_height="33dp"
+            android:layout_above="@+id/timer"
+            android:layout_alignEnd="@+id/affscore1"
+            android:layout_alignRight="@+id/affscore1"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="139dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/affequipe2"
+            android:layout_width="106dp"
+            android:layout_height="33dp"
+            android:layout_alignBottom="@+id/affequipe1"
+            android:layout_alignLeft="@+id/affscore2"
+            android:layout_alignStart="@+id/affscore2"
+            android:textSize="20sp" />
+
+        <Chronometer
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/pause"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="24dp"
+            android:textSize="30sp" />
+
+        <ToggleButton
+            android:id="@+id/pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/aff2"
+            android:layout_centerHorizontal="true"
+            android:checked="true"
+            android:textOff="Pause"
+            android:textOn="Jouer"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="117dp" />
+
+        <TextView
+            android:id="@+id/affscore1"
+            android:layout_width="88dp"
+            android:layout_height="56dp"
+            android:layout_above="@+id/faute1"
+            android:layout_alignLeft="@+id/faute1"
+            android:layout_alignStart="@+id/faute1"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            tools:layout_editor_absoluteX="51dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+        <TextView
+            android:id="@+id/affscore2"
+            android:layout_width="88dp"
+            android:layout_height="56dp"
+            android:layout_above="@+id/faute2"
+            android:layout_toEndOf="@+id/aff2"
+            android:layout_toRightOf="@+id/aff2"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            tools:layout_editor_absoluteX="245dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+        <RadioButton
+            android:id="@+id/aff1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/aff2"
+            android:layout_alignBottom="@+id/aff2"
+            android:layout_toEndOf="@+id/faute1"
+            android:layout_toRightOf="@+id/faute1"
+            android:duplicateParentState="false"
+            tools:layout_editor_absoluteX="139dp"
+            tools:layout_editor_absoluteY="170dp" />
+
+        <RadioButton
+            android:id="@+id/aff2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/faute1"
+            android:layout_alignEnd="@+id/annulfaute"
+            android:layout_alignRight="@+id/annulfaute"
+            android:duplicateParentState="false"
+            tools:layout_editor_absoluteX="213dp"
+            tools:layout_editor_absoluteY="170dp" />
+
+        <Button
+            android:id="@+id/faute1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/faute2"
+            android:layout_alignBottom="@+id/faute2"
+            android:layout_toLeftOf="@+id/annulfaute"
+            android:layout_toStartOf="@+id/annulfaute"
+            android:text="Faute"
+            tools:layout_editor_absoluteX="51dp"
+            tools:layout_editor_absoluteY="219dp" />
+
+        <Button
+            android:id="@+id/faute2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/aff2"
+            android:layout_toRightOf="@+id/aff2"
+            android:text="Faute"
+            tools:layout_editor_absoluteX="245dp"
+            tools:layout_editor_absoluteY="219dp" />
+
+        <ToggleButton
+            android:id="@+id/affservice"
+            android:layout_width="157dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/annulfaute"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:textAlignment="center"
+            android:textOff="Deuxième service"
+            android:textOn="Double faute"
+            tools:layout_editor_absoluteX="114dp"
+            tools:layout_editor_absoluteY="285dp" />
+
+        <Button
+            android:id="@+id/annulfaute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/finmatch"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="24dp"
+            android:text="Annuler faute"
+            android:textColor="@android:color/holo_red_dark"
+            tools:layout_editor_absoluteX="125dp"
+            tools:layout_editor_absoluteY="362dp" />
+
+        <Button
+            android:id="@+id/finmatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="Fin du match"
+            android:textColor="?attr/colorAccent"
+            tools:layout_editor_absoluteX="247dp"
+            tools:layout_editor_absoluteY="447dp" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
