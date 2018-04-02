@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.RadioButton;
-import android.widget.ToggleButton;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import java.util.concurrent.ExecutionException;
 
@@ -17,9 +17,9 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
     TextView equipe1;
     TextView equipe2;
     TextView score1;
-    int faute1;
+    int faute1 = 0;
     TextView score2;
-    int faute2;
+    int faute2 = 0;
     long idmatch;
     String team1;
     String team2;
@@ -41,7 +41,7 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
 
     Boolean service = false;
     Boolean pause = true;
-    Boolean dernierefaute;
+    Boolean dernierefaute = true;
 
     Chronometer simpleChronometer;
 
@@ -92,13 +92,13 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
         simpleChronometer = findViewById(R.id.timer); // initiate a chronometer
         simpleChronometer.setFormat("Temps écoulé - %s"); // set the format for a chronometer
 
-        Thread t=new Thread(){
+        Thread t = new Thread() {
 
 
             @Override
-            public void run(){
+            public void run() {
 
-                while(!isInterrupted()){
+                while (!isInterrupted()) {
 
                     try {
                         Thread.sleep(1000);  //1000ms = 1 sec
@@ -132,7 +132,7 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
         baff1.setChecked(false);
         baff2.setChecked(true);
         bservice.setChecked(false);
-        fauteservice=0;
+        fauteservice = 0;
     }
 
     public void setFaute2() {
@@ -143,7 +143,30 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
         baff1.setChecked(true);
         baff2.setChecked(false);
         bservice.setChecked(false);
-        fauteservice=0;
+        fauteservice = 0;
+    }
+
+    public void set2Faute1() {
+
+
+        dernierefaute = true;
+        faute1 = ajoutfaute1;
+        service = true;
+        baff1.setChecked(false);
+        baff2.setChecked(true);
+        bservice.setChecked(false);
+        fauteservice = 0;
+    }
+
+    public void set2Faute2() {
+
+        dernierefaute = false;
+        faute2 = ajoutfaute2;
+        service = false;
+        baff1.setChecked(true);
+        baff2.setChecked(false);
+        bservice.setChecked(false);
+        fauteservice = 0;
     }
 
     public void setScore1() {
@@ -160,36 +183,50 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
 
     public void annulerfaute1() {
 
-        ajoutscore2 = ajoutscore2 - 1;
-        ajoutfaute1 = ajoutfaute1 - 1;
-        score2.setText(String.valueOf(ajoutscore2));
-        //return ajoutscore2;
+        if (faute1 > 0) {
+
+            ajoutscore2 = ajoutscore2 - 1;
+            ajoutfaute1 = ajoutfaute1 - 1;
+            score2.setText(String.valueOf(ajoutscore2));
+            score1.setText(String.valueOf(ajoutscore1));
+            set2Faute1();
+
+
+            //return ajoutscore2;
+        }
+
+
     }
 
     public void annulerfaute2() {
 
-        ajoutscore1 = ajoutscore1 - 1;
-        ajoutfaute2 = ajoutfaute2 - 1;
-        score1.setText(String.valueOf(ajoutscore1));
-        //return ajoutscore1;
+        if (faute2 > 0) {
+
+            ajoutscore1 = ajoutscore1 - 1;
+            ajoutfaute2 = ajoutfaute2 - 1;
+            score1.setText(String.valueOf(ajoutscore1));
+            score2.setText(String.valueOf(ajoutscore2));
+
+            set2Faute2();
+            //return ajoutscore1;
+
+        }
     }
 
-    public void changerservice1()
-    {
-            baff1.setChecked(true);
-            baff2.setChecked(false);
-            service = false;
+    public void changerservice1() {
+        baff1.setChecked(true);
+        baff2.setChecked(false);
+        service = false;
     }
-    public void changerservice2()
-    {
+
+    public void changerservice2() {
         baff1.setChecked(false);
         baff2.setChecked(true);
         service = true;
     }
 
-    public void checkScore()
-    {
-        if(ajoutscore1 == 35 || ajoutscore2 == 35)
+    public void checkScore() {
+        if (ajoutscore1 == 35 || ajoutscore2 == 35)
             terminermatch();
     }
 
@@ -228,17 +265,14 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
         }
         if (view.getId() == R.id.affservice) {
 
-                fauteservice += 1;
+            fauteservice += 1;
 
-            if (fauteservice == 2)
-            {
+            if (fauteservice == 2) {
 
-                if (baff1.isChecked() && !service)
-                {
+                if (baff1.isChecked() && !service) {
                     setFaute1();
                     setScore2();
-                }else if (baff2.isChecked() && service)
-                {
+                } else if (baff2.isChecked() && service) {
                     setFaute2();
                     setScore1();
                 }

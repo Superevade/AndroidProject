@@ -88,6 +88,7 @@ public class MatchsDataSource {
 
     public List<Match> getAllMatchs() {
         List<Match> comments = new ArrayList<Match>();
+        List<Match> matchs = new ArrayList<Match>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_MATCHS,
                 allColumns, null, null, null, null, null);
@@ -100,7 +101,24 @@ public class MatchsDataSource {
         }
 
         cursor.close();
-        return comments;
+        if(comments.size()>5)
+        {
+
+            matchs.add(comments.get((comments.size()-1)));
+            matchs.add(comments.get((comments.size()-2)));
+            matchs.add(comments.get((comments.size()-3)));
+            matchs.add(comments.get((comments.size()-4)));
+            matchs.add(comments.get((comments.size()-5)));
+            return matchs;
+
+        }
+
+        else {
+
+            return comments;
+
+        }
+
     }
 
     private Match cursorToMatch(Cursor cursor) {
