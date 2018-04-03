@@ -1,20 +1,16 @@
 package com.example.pierre.chisterapp;
 
-        import java.io.File;
-        import java.util.ArrayList;
-        import java.util.List;
-
-        import android.app.Activity;
-        import android.content.ClipData;
         import android.content.Context;
-        import android.graphics.BitmapFactory;
-        import android.os.Bundle;
-        import android.support.v7.app.AppCompatActivity;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.BaseAdapter;
-        import android.widget.GridView;
-        import android.widget.ImageView;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+
+import java.io.File;
 
 public class GalleryActivity extends AppCompatActivity {
 
@@ -67,7 +63,7 @@ public class GalleryActivity extends AppCompatActivity {
             }
 
             BitmapFactory.Options options=new BitmapFactory.Options();
-            options.inSampleSize = 1;
+            options.inSampleSize = 2;
 
             imageView.setImageBitmap(BitmapFactory.decodeFile(mlistFiles[position].getPath(), options));
 

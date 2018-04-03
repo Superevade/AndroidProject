@@ -40,10 +40,12 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
     int fauteservice = 0;
 
     Boolean service = false;
-    Boolean pause = true;
-    Boolean dernierefaute = true;
 
-    Chronometer simpleChronometer;
+    Boolean dernierefaute = true;
+    private ChronoFragment chrono;
+
+
+
 
 
     private MatchsDataSource datasource;
@@ -54,13 +56,17 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pendant_match);
 
+        chrono = ChronoFragment.newInstance("first fragment", "you");
+        getSupportFragmentManager().beginTransaction().add(R.id.chrono,
+                chrono).commit();
+
         score1 = findViewById(R.id.affscore1);
         score2 = findViewById(R.id.affscore2);
         equipe1 = findViewById(R.id.affequipe1);
         equipe2 = findViewById(R.id.affequipe2);
         bfaute1 = findViewById(R.id.faute1);
         bfaute2 = findViewById(R.id.faute2);
-        bpause = findViewById(R.id.pause);
+
         bservice = findViewById(R.id.affservice);
         bannulfaute = findViewById(R.id.annulfaute);
         bfinmatch = findViewById(R.id.finmatch);
@@ -69,7 +75,7 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
 
         bfaute1.setOnClickListener(this);
         bfaute2.setOnClickListener(this);
-        bpause.setOnClickListener(this);
+
         bservice.setOnClickListener(this);
         bannulfaute.setOnClickListener(this);
         bfinmatch.setOnClickListener(this);
@@ -89,37 +95,7 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
 
         datasource.open();
 
-        simpleChronometer = findViewById(R.id.timer); // initiate a chronometer
-        simpleChronometer.setFormat("Temps écoulé - %s"); // set the format for a chronometer
 
-        Thread t = new Thread() {
-
-
-            @Override
-            public void run() {
-
-                while (!isInterrupted()) {
-
-                    try {
-                        Thread.sleep(1000);  //1000ms = 1 sec
-
-                        runOnUiThread(new Runnable() {
-
-                            @Override
-                            public void run() {
-                                findViewById(R.id.timer);
-                            }
-                        });
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            }
-        };
-
-        t.start();
 
     }
 
@@ -144,6 +120,7 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
         baff2.setChecked(false);
         bservice.setChecked(false);
         fauteservice = 0;
+
     }
 
     public void set2Faute1() {
@@ -251,18 +228,7 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
             setScore1();
         }
 
-        if (view.getId() == R.id.pause) {
 
-            if (pause) {
-                simpleChronometer.start();
-                pause = false;
-            }
-            if (!pause) {
-                simpleChronometer.stop();
-                pause = true;
-            }
-
-        }
         if (view.getId() == R.id.affservice) {
 
             fauteservice += 1;

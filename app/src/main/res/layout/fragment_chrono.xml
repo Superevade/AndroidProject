@@ -1,0 +1,54 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.pierre.chisterapp.ChronoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20px"
+        android:orientation="vertical">
+
+    <Chronometer
+        android:id="@+id/mainChronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="25sp"
+        android:typeface="serif"
+        android:layout_marginTop="20dp"/>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20px"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonToggleChronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20px"
+            android:textColor="@color/colorPrimaryDark"
+            android:onClick="onClick"
+            android:text="Start" />
+
+        <Button
+            android:id="@+id/buttonReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20px"
+            android:onClick="onClick"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Reinitialiser le chronometre" />
+
+    </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

@@ -70,6 +70,8 @@
         android:orientation="horizontal"
         android:textColor="@color/colorPrimaryDark">
 
+
+
         <TextView
             android:id="@+id/lat"
             android:layout_width="0dp"

@@ -6,6 +6,7 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,6 +18,10 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
@@ -39,7 +44,6 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
     double lng;
 
 
-
     private Marker clickedMarker;
     private MatchsDataSource datasource;
 
@@ -55,22 +59,46 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
 
-
-
         Latmatch = (TextView) findViewById(R.id.lat);
         Longmatch = (TextView) findViewById(R.id.longi);
         adress = (TextView) findViewById(R.id.adresse);
         Equip1 = findViewById(R.id.equip1);
         Equip2 = findViewById(R.id.equip2);
 
+      /*  Button buttontruc = (Button) findViewById(R.id.button2);
+        buttontruc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ConnectionServer cs = new ConnectionServer("aff_match.php");
+                        try {
+                            String serverResponse = cs.getAff_Match(1);
+                            JSONArray jsonArray = new JSONArray(serverResponse);
+
+                            JSONObject jsonObject = new JSONObject(jsonArray.get(0).toString());
+                            String equipe1 = jsonObject.getString("equipe1");
+                            System.out.println("EQUIPE1: " + equipe1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+            }
+        });*/
 
 
-        datasource = new MatchsDataSource(this);
+        datasource= new MatchsDataSource(this);
+
 
         datasource.open();
 
 
     }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -78,7 +106,6 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMapClickListener(this);
 
     }
-
 
 
     @Override
@@ -94,8 +121,8 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
             lat = (double) (latLng.latitude);
             lng = (double) (latLng.longitude);
 
-            Latmatch.setText("Latitude du match : "+ String.valueOf(lat));
-            Longmatch.setText("Latitude du match : "+ String.valueOf(lng));
+            Latmatch.setText("Latitude du match : " + String.valueOf(lat));
+            Longmatch.setText("Latitude du match : " + String.valueOf(lng));
 
 
             Geocoder geocoder;
@@ -125,7 +152,6 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
             }
 
 
-
         }
     }
 
@@ -135,12 +161,17 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         Match match = null;
 
 
-                match = datasource.createMatch(Equip1.getText().toString(),Equip2.getText().toString(), adress.getText().toString(),"0","0","0","0");
-               // adapter.add(match);
+        match = datasource.createMatch(Equip1.getText().toString(), Equip2.getText().toString(), adress.getText().toString(), "0", "0", "0", "0");
+        // adapter.add(match);
+        //int idmatch = (int) match.getId();
+       // ConnectionServer cs = new ConnectionServer("create_match.php");
+      /*  try {
+            String serverResponse = cs.getCreate_Match(match.getTeam1(), match.getTeam2(),adress.getText().toString(),0,0,0,0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
 
-
-
-       // adapter.notifyDataSetChanged();
+        // adapter.notifyDataSetChanged();
         finish();
         Intent intent = new Intent(this, PendantMatch.class);
         intent.putExtra("equipe1", match.getTeam1());
@@ -151,7 +182,7 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
 
     public void myClickHandler(View view) throws ExecutionException, InterruptedException {
 
-        if (view.getId()==R.id.ajoutmatch) {
+        if (view.getId() == R.id.ajoutmatch) {
 
             ajoutMatch(view);
 
@@ -168,7 +199,6 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         super.onPause();
 
 
-
     }
 
     @Override
@@ -176,10 +206,6 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         datasource.open();
         super.onResume();
     }
-
-
-
-
 
 
     /**
