@@ -70,11 +70,6 @@
         android:orientation="horizontal"
         android:textColor="@color/colorPrimaryDark">
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> e034b82c6747a2362c345dba70f72dfe1e668239
         <TextView
             android:id="@+id/lat"
             android:layout_width="0dp"

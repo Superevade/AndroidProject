@@ -56,11 +56,8 @@
             android:label="@string/title_activity_ajouter_match" />
         <activity android:name=".ModifierMatch" />
         <activity android:name=".PendantMatch" />
-<<<<<<< HEAD
         <activity android:name=".PendantMatch2"></activity>
-=======
         <activity android:name=".AffBDDExt"></activity>
->>>>>>> e034b82c6747a2362c345dba70f72dfe1e668239
     </application>
 
 </manifest>
