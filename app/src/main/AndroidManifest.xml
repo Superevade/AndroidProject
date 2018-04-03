@@ -37,14 +37,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".CameraActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape">
-
-            <!-- configure this activity to use landscape orientation -->
-
-        </activity>
         <activity android:name=".GalleryActivity" />
         <activity android:name=".Infos" />
         <!--
@@ -63,7 +55,8 @@
             android:name=".AjouterMatch"
             android:label="@string/title_activity_ajouter_match" />
         <activity android:name=".ModifierMatch" />
-        <activity android:name=".PendantMatch"></activity>
+        <activity android:name=".PendantMatch" />
+        <activity android:name=".AffBDDExt"></activity>
     </application>
 
 </manifest>

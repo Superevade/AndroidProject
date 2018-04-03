@@ -21,31 +21,22 @@
             android:layout_height="wrap_content"
 
             android:layout_margin="20px"
-
-            android:text="Liste des matchs enregistrés dans la bdd locale :"
+            android:text="Liste des matchs enregistrés dans la bdd externe :"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"
             android:textSize="20sp"
-           />
+            />
 
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20px"
+            android:background="@color/colorPrimary"
 
-
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20px"
-        android:background="@color/colorPrimary"
-
-        />
-
-
+            />
 
     </LinearLayout>
-
-
-
-
 
 </android.support.constraint.ConstraintLayout>

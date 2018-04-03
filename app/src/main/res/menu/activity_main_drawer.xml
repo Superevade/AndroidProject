@@ -9,19 +9,25 @@
     <item android:title="Matchs">
 
 
-
         <menu>
             <item
 
                 android:id="@+id/ajoutmatch"
-                android:title="Ajouter un match"
                 android:icon="@drawable/ic_action_name2"
-             />
+                android:title="Ajouter un match" />
 
             <item
                 android:id="@+id/nav_manage"
                 android:icon="@drawable/ic_menu_manage"
                 android:title="Editer un match" />
+
+
+            <item
+                android:id="@+id/nav_bddext"
+                android:icon="@drawable/ic_action_name"
+                android:title="Liste des matchs BDD externe" />
+
+
         </menu>
     </item>
 
@@ -54,7 +60,6 @@
                 android:id="@+id/nav_infos"
                 android:icon="@drawable/ic_infos"
                 android:title="Les règles de la Cesta Punta" />
-
 
 
         </menu>

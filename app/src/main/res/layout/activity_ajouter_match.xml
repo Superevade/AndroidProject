@@ -70,13 +70,6 @@
         android:orientation="horizontal"
         android:textColor="@color/colorPrimaryDark">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
-
         <TextView
             android:id="@+id/lat"
             android:layout_width="0dp"
