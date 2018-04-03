@@ -23,7 +23,7 @@ public class MatchsDataSource {
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
     private String[] allColumns = { MySQLiteHelper.COLUMN_ID,
-            MySQLiteHelper.COLUMN_TEAM1, MySQLiteHelper.COLUMN_TEAM2, MySQLiteHelper.COLUMN_LONG, MySQLiteHelper.COLUMN_LAT,MySQLiteHelper.COLUMN_SCORE1, MySQLiteHelper.COLUMN_FAUTES1,MySQLiteHelper.COLUMN_SCORE2, COLUMN_FAUTES2};
+            MySQLiteHelper.COLUMN_TEAM1, MySQLiteHelper.COLUMN_TEAM2, MySQLiteHelper.COLUMN_ADRESS,MySQLiteHelper.COLUMN_SCORE1, MySQLiteHelper.COLUMN_FAUTES1,MySQLiteHelper.COLUMN_SCORE2, COLUMN_FAUTES2};
 
     public MatchsDataSource(Context context) {
         dbHelper = new MySQLiteHelper(context);
@@ -37,12 +37,11 @@ public class MatchsDataSource {
         dbHelper.close();
     }
 
-    public Match createMatch(String team1, String team2, String longitude, String latitude,String score1, String fautes1,String score2, String fautes2) {
+    public Match createMatch(String team1, String team2, String adresse,String score1, String fautes1,String score2, String fautes2) {
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_TEAM1, team1);
         values.put(MySQLiteHelper.COLUMN_TEAM2, team2);
-        values.put(MySQLiteHelper.COLUMN_LONG, longitude);
-        values.put(MySQLiteHelper.COLUMN_LAT, latitude);
+        values.put(MySQLiteHelper.COLUMN_ADRESS, adresse);
         values.put(MySQLiteHelper.COLUMN_SCORE1, score1);
         values.put(MySQLiteHelper.COLUMN_FAUTES1, fautes1);
         values.put(MySQLiteHelper.COLUMN_SCORE2, score2);
@@ -126,8 +125,7 @@ public class MatchsDataSource {
         match.setId(cursor.getLong(cursor.getColumnIndex(MySQLiteHelper.COLUMN_ID)));
         match.setTeam1(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_TEAM1)));
         match.setTeam2(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_TEAM2)));
-        match.setLongitude(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_LONG)));
-        match.setLatitude(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_LAT)));
+        match.setAdresse(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_ADRESS)));
         match.setScore1(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_SCORE1)));
         match.setFaute1(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_FAUTES1)));
         match.setScore2(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_SCORE2)));

@@ -8,8 +8,8 @@ public class Match {
     private long id;
     private String team1;
     private String team2;
-    private String longitude;
-    private String latitude;
+    private String adresse;
+
     private String score1;
     private String faute1;
     private String score2;
@@ -39,21 +39,15 @@ public class Match {
         this.team2 = team;
     }
 
-    public String getLong() {
-        return longitude;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
+    public void setAdresse(String address) {
+        this.adresse = address;
     }
 
-    public String getLat() {
-        return latitude;
-    }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
 
     public String getScore1() {
         return score1;
@@ -96,7 +90,7 @@ public class Match {
     @Override
     public String toString() {
 
-     String s = "ID du match : "+ id +"\n"+"Match opposant " + team1 +  " à " + team2 +"\n" + longitude + "\n" + latitude + "\n" +
+     String s = "ID du match : "+ id +"\n"+"Match opposant " + team1 +  " à " + team2 +"\n" + adresse + "\n" +
         "Score de l'équipe 1 :  " + score1 + "\n"+"Nombre de fautes de l'équipe 1 :  " + faute1 + "\n" +
              "Score de l'équipe 2 :  " + score2 + "\n"+"Nombre de fautes de l'équipe 2 :  " + faute2 + "\n" ;
         return s;
