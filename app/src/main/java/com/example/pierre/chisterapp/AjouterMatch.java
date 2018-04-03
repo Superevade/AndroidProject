@@ -44,7 +44,6 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
     double lng;
 
 
-
     private Marker clickedMarker;
     private MatchsDataSource datasource;
 
@@ -58,8 +57,6 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
 
         mapFragment.getMapAsync(this);
-
-
 
 
         Latmatch = (TextView) findViewById(R.id.lat);
@@ -82,7 +79,7 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
 
                             JSONObject jsonObject = new JSONObject(jsonArray.get(0).toString());
                             String equipe1 = jsonObject.getString("equipe1");
-                            System.out.println("EQUIPE1: "+equipe1);
+                            System.out.println("EQUIPE1: " + equipe1);
                         } catch (IOException e) {
                             e.printStackTrace();
                         } catch (JSONException e) {
@@ -94,13 +91,13 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         });
 
 
-
         datasource = new MatchsDataSource(this);
 
         datasource.open();
 
 
     }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -108,7 +105,6 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMapClickListener(this);
 
     }
-
 
 
     @Override
@@ -124,8 +120,8 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
             lat = (double) (latLng.latitude);
             lng = (double) (latLng.longitude);
 
-            Latmatch.setText("Latitude du match : "+ String.valueOf(lat));
-            Longmatch.setText("Latitude du match : "+ String.valueOf(lng));
+            Latmatch.setText("Latitude du match : " + String.valueOf(lat));
+            Longmatch.setText("Latitude du match : " + String.valueOf(lng));
 
 
             Geocoder geocoder;
@@ -155,7 +151,6 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
             }
 
 
-
         }
     }
 
@@ -165,12 +160,17 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         Match match = null;
 
 
-                match = datasource.createMatch(Equip1.getText().toString(),Equip2.getText().toString(), adress.getText().toString(),"0","0","0","0");
-               // adapter.add(match);
+        match = datasource.createMatch(Equip1.getText().toString(), Equip2.getText().toString(), adress.getText().toString(), "0", "0", "0", "0");
+        // adapter.add(match);
+        //int idmatch = (int) match.getId();
+        ConnectionServer cs = new ConnectionServer("create_match.php");
+        try {
+            String serverResponse = cs.getCreate_Match(match.getTeam1(), match.getTeam2(),adress.getText().toString(),0,0,0,0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-
-
-       // adapter.notifyDataSetChanged();
+        // adapter.notifyDataSetChanged();
         finish();
         Intent intent = new Intent(this, PendantMatch.class);
         intent.putExtra("equipe1", match.getTeam1());
@@ -181,7 +181,7 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
 
     public void myClickHandler(View view) throws ExecutionException, InterruptedException {
 
-        if (view.getId()==R.id.ajoutmatch) {
+        if (view.getId() == R.id.ajoutmatch) {
 
             ajoutMatch(view);
 
@@ -198,7 +198,6 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         super.onPause();
 
 
-
     }
 
     @Override
@@ -206,10 +205,6 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         datasource.open();
         super.onResume();
     }
-
-
-
-
 
 
     /**
