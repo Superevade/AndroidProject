@@ -35,6 +35,7 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
     private SupportMapFragment mapFragment;
     private TextView Latmatch;
     private TextView Longmatch;
+    private TextView adress;
     EditText Equip1;
     EditText Equip2;
     ListView mListView;
@@ -63,6 +64,7 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
 
         Latmatch = (TextView) findViewById(R.id.lat);
         Longmatch = (TextView) findViewById(R.id.longi);
+        adress = (TextView) findViewById(R.id.adresse);
         Equip1 = findViewById(R.id.equip1);
         Equip2 = findViewById(R.id.equip2);
 
@@ -123,6 +125,7 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
             lng = (double) (latLng.longitude);
 
             Latmatch.setText("Latitude du match : "+ String.valueOf(lat));
+            Longmatch.setText("Latitude du match : "+ String.valueOf(lng));
 
 
             Geocoder geocoder;
@@ -131,18 +134,20 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
 
             try {
                 addresses = geocoder.getFromLocation(lat, lng, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-                String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-                String city = addresses.get(0).getLocality();
-                String state = addresses.get(0).getAdminArea();
-                String country = addresses.get(0).getCountryName();
-                String postalCode = addresses.get(0).getPostalCode();
+                String adressgeo = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+                //String city = addresses.get(0).getLocality();
+                //String state = addresses.get(0).getAdminArea();
+                //String country = addresses.get(0).getCountryName();
+                //String postalCode = addresses.get(0).getPostalCode();
 
 
-                System.out.println(address);
-                System.out.println(city);
-                System.out.println(state);
-                System.out.println(country);
-                System.out.println(postalCode);
+                System.out.println(adressgeo);
+                //System.out.println(city);
+                //System.out.println(state);
+                //System.out.println(country);
+                //System.out.println(postalCode);
+
+                adress.setText(adressgeo);
 
 
             } catch (IOException e) {
@@ -160,7 +165,7 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         Match match = null;
 
 
-                match = datasource.createMatch(Equip1.getText().toString(),Equip2.getText().toString(), Longmatch.getText().toString(), Latmatch.getText().toString(),"0","0","0","0");
+                match = datasource.createMatch(Equip1.getText().toString(),Equip2.getText().toString(), adress.getText().toString(),"0","0","0","0");
                // adapter.add(match);
 
 

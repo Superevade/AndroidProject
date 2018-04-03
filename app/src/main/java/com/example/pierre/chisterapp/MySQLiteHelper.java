@@ -16,8 +16,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_TEAM1 = "team1";
     public static final String COLUMN_TEAM2 = "team2";
-    public static final String COLUMN_LONG = "long";
-    public static final String COLUMN_LAT = "lat";
+    public static final String COLUMN_ADRESS = "adresse";
     public static final String COLUMN_SCORE1 = "score1";
     public static final String COLUMN_FAUTES1 = "faute1";
     public static final String COLUMN_SCORE2 = "score2";
@@ -33,8 +32,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + TABLE_MATCHS + "(" + COLUMN_ID
             + " integer primary key autoincrement, " + COLUMN_TEAM1
             + " text not null, " + COLUMN_TEAM2
-            + " text not null, " + COLUMN_LONG
-            + " text not null, " + COLUMN_LAT
+            + " text not null, " + COLUMN_ADRESS
             + " text not null, " + COLUMN_SCORE1
             + " text not null, " + COLUMN_FAUTES1
             + " text not null, " + COLUMN_SCORE2
