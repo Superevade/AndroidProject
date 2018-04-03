@@ -61,6 +61,7 @@
 
         <activity android:name=".AffBDDExt"></activity>
 
+
     </application>
 
 </manifest>
