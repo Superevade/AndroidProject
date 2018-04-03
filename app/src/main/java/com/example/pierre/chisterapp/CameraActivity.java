@@ -34,7 +34,7 @@ import java.util.List;
 
 import static android.hardware.Camera.*;
 
-public class CameraActivity extends AppCompatActivity implements SurfaceHolder.Callback {
+public class + CameraActivity extends AppCompatActivity implements SurfaceHolder.Callback {
 
     private Camera camera = null;
     private SurfaceView surfaceCamera;
