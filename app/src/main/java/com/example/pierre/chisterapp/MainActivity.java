@@ -1,7 +1,9 @@
 package com.example.pierre.chisterapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private MatchsDataSource datasource;
+    int REQUEST_IMAGE_CAPTURE = 1;
     ListView mListView;
 
     @Override
@@ -44,6 +47,23 @@ public class MainActivity extends AppCompatActivity
         datasource = new MatchsDataSource(this);
 
 
+    }
+
+    public void startCameraActivity()
+    {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        if (intent.resolveActivity(getApplicationContext().getPackageManager()) != null) {
+            ContentValues values = new ContentValues(1);
+            values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpg");
+
+            //String fileName = "photo_" + new SimpleDateFormat("yyMMddHHmmss").format(new Date()) + ".jpg";
+            //File photo = new File(PICTURE_DIR, fileName);
+
+            //intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photo));
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values));
+            startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+        }
     }
 
     @Override
@@ -84,20 +104,20 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            Intent intent = new Intent(this, CameraActivity.class);
-
-            startActivity(intent);
-            return true;
+        if (id == R.id.nav_camera)
+        {
+            startCameraActivity();
         }
-        if (id == R.id.ajoutmatch) {
+        if (id == R.id.ajoutmatch)
+        {
 
             Intent intent = new Intent(this, AjouterMatch.class);
 
             startActivity(intent);
             // Handle the camera action
         }
-        if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_gallery)
+        {
             Intent intent = new Intent(this, GalleryActivity.class);
 
              startActivity(intent);
@@ -105,7 +125,8 @@ public class MainActivity extends AppCompatActivity
 
 
         }
-        if (id == R.id.nav_infos) {
+        if (id == R.id.nav_infos)
+        {
 
             Intent intent = new Intent(this, Infos.class);
 
@@ -113,7 +134,8 @@ public class MainActivity extends AppCompatActivity
             return true;
 
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_manage)
+        {
 
             Intent intent = new Intent(this, ModifierMatch.class);
 

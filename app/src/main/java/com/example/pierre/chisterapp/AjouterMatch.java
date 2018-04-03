@@ -6,6 +6,7 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,6 +18,10 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
@@ -60,6 +65,31 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         Longmatch = (TextView) findViewById(R.id.longi);
         Equip1 = findViewById(R.id.equip1);
         Equip2 = findViewById(R.id.equip2);
+
+        Button buttontruc = (Button) findViewById(R.id.button2);
+        buttontruc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ConnectionServer cs = new ConnectionServer("aff_match.php");
+                        try {
+                            String serverResponse = cs.getAff_Match(1);
+                            JSONArray jsonArray = new JSONArray(serverResponse);
+
+                            JSONObject jsonObject = new JSONObject(jsonArray.get(0).toString());
+                            String equipe1 = jsonObject.getString("equipe1");
+                            System.out.println("EQUIPE1: "+equipe1);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+            }
+        });
 
 
 

@@ -144,6 +144,7 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
         baff2.setChecked(false);
         bservice.setChecked(false);
         fauteservice = 0;
+
     }
 
     public void set2Faute1() {
@@ -256,8 +257,8 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
             if (pause) {
                 simpleChronometer.start();
                 pause = false;
-            }
-            if (!pause) {
+            }else if (!pause)
+            {
                 simpleChronometer.stop();
                 pause = true;
             }
