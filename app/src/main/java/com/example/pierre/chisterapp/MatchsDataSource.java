@@ -88,6 +88,7 @@ public class MatchsDataSource {
         List<Match> comments = new ArrayList<Match>();
         List<Match> matchs = new ArrayList<Match>();
 
+
         Cursor cursor = database.query(MySQLiteHelper.TABLE_MATCHS,
                 allColumns, null, null, null, null, null);
 

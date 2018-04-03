@@ -116,6 +116,12 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             // Handle the camera action
         }
+        if (id == R.id.nav_bddext)
+        {
+            Intent intent = new Intent(this, AffBDDExt.class);
+
+            startActivity(intent);
+        }
         if (id == R.id.nav_gallery)
         {
             Intent intent = new Intent(this, GalleryActivity.class);

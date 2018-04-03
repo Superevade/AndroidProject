@@ -6,7 +6,6 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,10 +17,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
@@ -89,6 +84,7 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
                 }).start();
             }
         });*/
+
 
 
         datasource= new MatchsDataSource(this);
@@ -163,6 +159,7 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
 
         match = datasource.createMatch(Equip1.getText().toString(), Equip2.getText().toString(), adress.getText().toString(), "0", "0", "0", "0");
         // adapter.add(match);
+
         //int idmatch = (int) match.getId();
        // ConnectionServer cs = new ConnectionServer("create_match.php");
       /*  try {
@@ -171,13 +168,15 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
             e.printStackTrace();
         }*/
 
+
         // adapter.notifyDataSetChanged();
-        finish();
+
         Intent intent = new Intent(this, PendantMatch.class);
         intent.putExtra("equipe1", match.getTeam1());
         intent.putExtra("equipe2", match.getTeam2());
         intent.putExtra("idmatch", match.getId());
         startActivity(intent);
+        finish();
     }
 
     public void myClickHandler(View view) throws ExecutionException, InterruptedException {

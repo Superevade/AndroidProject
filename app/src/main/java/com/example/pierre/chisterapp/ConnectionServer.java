@@ -130,7 +130,7 @@ public class ConnectionServer {
         return "failed";
     }
 
-    String getAff_Match(int matchId) throws IOException {
+    String Aff_Match(int matchId) throws IOException {
         String matchIdToSend = String.valueOf(matchId);
         Uri.Builder builder = new Uri.Builder()
                 .appendQueryParameter("matchId", matchIdToSend);
@@ -138,11 +138,16 @@ public class ConnectionServer {
         return sendToServer(builder);
     }
 
-    String getCreate_Match(String team1, String team2, String adresse, int score1, int fautes1 , int score2, int fautes2) throws IOException {
+    String Delete_Match(int matchId) throws IOException {
+        String matchIdToSend = String.valueOf(matchId);
+        Uri.Builder builder = new Uri.Builder()
+                .appendQueryParameter("matchId", matchIdToSend);
+
+        return sendToServer(builder);
+    }
+
+    String getCreate_Match(String team1, String team2, int score1, int fautes1 , int score2, int fautes2) throws IOException {
         //String matchIdToSend = String.valueOf(matchId);
-        String team1ToSend = team1;
-        String team2ToSend = team2;
-        String adresseToSend = adresse;
         String score1ToSend = String.valueOf(score1);
         String fautes1ToSend = String.valueOf(fautes1);
         String score2ToSend = String.valueOf(score2);
@@ -150,15 +155,32 @@ public class ConnectionServer {
 
         Uri.Builder builder = new Uri.Builder()
                 //.appendQueryParameter("matchId", matchIdToSend)
-                .appendQueryParameter("team1", team1ToSend)
-                .appendQueryParameter("team2", team2ToSend)
-                .appendQueryParameter("adresse", adresseToSend)
+                .appendQueryParameter("equipe1", team1)
+                .appendQueryParameter("equipe2", team2)
                 .appendQueryParameter("score1", score1ToSend)
                 .appendQueryParameter("fautes1", fautes1ToSend)
                 .appendQueryParameter("score2", score2ToSend)
                 .appendQueryParameter("fautes2", fautes2ToSend);
 
+        System.out.println(team1);
+        System.out.println(team2);
 
+        return sendToServer(builder);
+    }
+
+    String Update_Match(int matchId, int score1, int fautes1 , int score2, int fautes2) throws IOException {
+        String matchIdToSend = String.valueOf(matchId);
+        String score1ToSend = String.valueOf(score1);
+        String fautes1ToSend = String.valueOf(fautes1);
+        String score2ToSend = String.valueOf(score2);
+        String fautes2ToSend = String.valueOf(fautes2);
+
+        Uri.Builder builder = new Uri.Builder()
+                .appendQueryParameter("matchId", matchIdToSend)
+                .appendQueryParameter("score1", score1ToSend)
+                .appendQueryParameter("fautes1", fautes1ToSend)
+                .appendQueryParameter("score2", score2ToSend)
+                .appendQueryParameter("fautes2", fautes2ToSend);
 
         return sendToServer(builder);
     }
