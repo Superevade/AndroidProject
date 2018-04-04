@@ -9,10 +9,6 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
@@ -217,14 +213,9 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
                 ConnectionServer cs = new ConnectionServer("create_match.php");
                 try {
                     String truc = cs.getCreate_Match(team1, team2, ajoutscore1, faute1, ajoutscore2, faute2);
-                    JSONArray jsonArray = new JSONArray(truc);
-                    JSONObject object = new JSONObject(jsonArray.get(0).toString());
-                    int workoutID = object.getInt("id");
                 } catch (IOException e) {
                     e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                } 
             }
         }).start();
 

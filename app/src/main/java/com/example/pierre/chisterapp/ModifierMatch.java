@@ -7,10 +7,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
@@ -68,12 +64,7 @@ public class ModifierMatch extends AppCompatActivity {
                         int Servscore2 = Integer.valueOf(score2.getText().toString());
                         int Servfaute2 = Integer.valueOf(faute2.getText().toString());
                         String truc = cs.Update_Match(idmatch, Servscore1, Servfaute1, Servscore2, Servfaute2);
-                        JSONArray jsonArray = new JSONArray(truc);
-                        JSONObject object = new JSONObject(jsonArray.get(0).toString());
-                        int workoutID = object.getInt("id");
                     } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
@@ -102,12 +93,7 @@ public class ModifierMatch extends AppCompatActivity {
                     try {
                         int idmatch = Integer.valueOf(id2.getText().toString());
                         String truc = cs.Delete_Match(idmatch);
-                        JSONArray jsonArray = new JSONArray(truc);
-                        JSONObject object = new JSONObject(jsonArray.get(0).toString());
-                        int workoutID = object.getInt("id");
                     } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
