@@ -130,10 +130,8 @@ public class ConnectionServer {
         return "failed";
     }
 
-    String Aff_Match(int matchId) throws IOException {
-        String matchIdToSend = String.valueOf(matchId);
-        Uri.Builder builder = new Uri.Builder()
-                .appendQueryParameter("matchId", matchIdToSend);
+    String Aff_Match() throws IOException {
+        Uri.Builder builder = new Uri.Builder();
 
         return sendToServer(builder);
     }

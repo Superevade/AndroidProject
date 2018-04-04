@@ -49,9 +49,6 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
     private ChronoFragment chrono;
 
 
-
-
-
     private MatchsDataSource datasource;
 
     @SuppressLint("WrongViewCast")
@@ -98,7 +95,6 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
         datasource = new MatchsDataSource(this);
 
         datasource.open();
-
 
 
     }
@@ -220,7 +216,7 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
             public void run() {
                 ConnectionServer cs = new ConnectionServer("create_match.php");
                 try {
-                    String truc = cs.getCreate_Match(team1, team2,ajoutscore1,faute1,ajoutscore2,faute2);
+                    String truc = cs.getCreate_Match(team1, team2, ajoutscore1, faute1, ajoutscore2, faute2);
                     JSONArray jsonArray = new JSONArray(truc);
                     JSONObject object = new JSONObject(jsonArray.get(0).toString());
                     int workoutID = object.getInt("id");
@@ -231,6 +227,7 @@ public class PendantMatch extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }).start();
+
         finish();
 
     }

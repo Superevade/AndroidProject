@@ -120,6 +120,7 @@ public class MatchsDataSource {
 
     }
 
+
     private Match cursorToMatch(Cursor cursor) {
         Match match = new Match();
         match.setId(cursor.getLong(cursor.getColumnIndex(MySQLiteHelper.COLUMN_ID)));

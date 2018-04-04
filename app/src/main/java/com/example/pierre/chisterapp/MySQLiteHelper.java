@@ -1,6 +1,5 @@
 package com.example.pierre.chisterapp;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -21,7 +20,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_FAUTES1 = "faute1";
     public static final String COLUMN_SCORE2 = "score2";
     public static final String COLUMN_FAUTES2 = "faute2";
-
 
 
     private static final String DATABASE_NAME = "matchs.db";
@@ -57,8 +55,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
 
     }
-
-
 
 
 }

@@ -118,9 +118,9 @@ public class MainActivity extends AppCompatActivity
         }
         if (id == R.id.nav_bddext)
         {
-            Intent intent = new Intent(this, AffBDDExt.class);
+            /*Intent intent = new Intent(this, AffBDDExt.class);
 
-            startActivity(intent);
+            startActivity(intent);*/
         }
         if (id == R.id.nav_gallery)
         {

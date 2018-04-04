@@ -60,33 +60,6 @@ public class AjouterMatch extends FragmentActivity implements OnMapReadyCallback
         Equip1 = findViewById(R.id.equip1);
         Equip2 = findViewById(R.id.equip2);
 
-      /*  Button buttontruc = (Button) findViewById(R.id.button2);
-        buttontruc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        ConnectionServer cs = new ConnectionServer("aff_match.php");
-                        try {
-                            String serverResponse = cs.getAff_Match(1);
-                            JSONArray jsonArray = new JSONArray(serverResponse);
-
-                            JSONObject jsonObject = new JSONObject(jsonArray.get(0).toString());
-                            String equipe1 = jsonObject.getString("equipe1");
-                            System.out.println("EQUIPE1: " + equipe1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }).start();
-            }
-        });*/
-
-
-
         datasource= new MatchsDataSource(this);
 
 
