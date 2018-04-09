@@ -17,11 +17,6 @@ public class AffBDDExt extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aff_bddext);
 
-
-
-        //for(int i = 0; i<30;i++)
-        {
-            //matchid ++;
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -57,7 +52,8 @@ public class AffBDDExt extends AppCompatActivity {
                     }
                 }
             }).start();
-        }
+
 
     }
+
 }

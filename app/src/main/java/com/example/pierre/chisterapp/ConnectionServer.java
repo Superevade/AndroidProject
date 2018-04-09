@@ -131,7 +131,10 @@ public class ConnectionServer {
     }
 
     String Aff_Match() throws IOException {
-        Uri.Builder builder = new Uri.Builder();
+        String text = "";
+        Uri.Builder builder = new Uri.Builder()
+                .appendQueryParameter("blank", text);
+
 
         return sendToServer(builder);
     }
